@@ -5,6 +5,11 @@ using namespace std;
 // Simple program that breaks an amount of cents into coins.
 // Demonstrates integer division and modulo operator, and an alternative without modulo.
 
+const int DOLLAR_VALUE = 100;
+const int QUARTER_VALUE = 25;
+const int DIME_VALUE = 10;
+const int NICKEL_VALUE = 5;
+
 void print_change(int dollars, int quarters, int dimes, int nickels, int pennies, const string& label) {
     cout << "\n" << label << ":\n";
     cout << "dollars  : " << dollars << endl;
@@ -15,28 +20,19 @@ void print_change(int dollars, int quarters, int dimes, int nickels, int pennies
 }
 
 void calculate_change_with_modulo(int cents) {
-    const int dollar_value {100};
-    const int quarter_value {25};
-    const int dime_value {10};
-    const int nickel_value {5};
+    int dollars {}, quarters {}, dimes {}, nickels {}, pennies {};
 
-    int dollars {};
-    int quarters {};
-    int dimes {};
-    int nickels {};
-    int pennies {};
+    dollars = cents / DOLLAR_VALUE;
+    cents %= DOLLAR_VALUE;
 
-    dollars = cents / dollar_value;
-    cents %= dollar_value;
+    quarters = cents / QUARTER_VALUE;
+    cents %= QUARTER_VALUE;
 
-    quarters = cents / quarter_value;
-    cents %= quarter_value;
+    dimes = cents / DIME_VALUE;
+    cents %= DIME_VALUE;
 
-    dimes = cents / dime_value;
-    cents %= dime_value;
-
-    nickels = cents / nickel_value;
-    cents %= nickel_value;
+    nickels = cents / NICKEL_VALUE;
+    cents %= NICKEL_VALUE;
 
     pennies = cents;
 
@@ -44,28 +40,19 @@ void calculate_change_with_modulo(int cents) {
 }
 
 void calculate_change_without_modulo(int cents) {
-    const int dollar_value {100};
-    const int quarter_value {25};
-    const int dime_value {10};
-    const int nickel_value {5};
+    int dollars {}, quarters {}, dimes {}, nickels {}, pennies {};
 
-    int dollars {};
-    int quarters {};
-    int dimes {};
-    int nickels {};
-    int pennies {};
+    dollars = cents / DOLLAR_VALUE;
+    cents = cents - (dollars * DOLLAR_VALUE);
 
-    dollars = cents / dollar_value;
-    cents = cents - (dollars * dollar_value);
+    quarters = cents / QUARTER_VALUE;
+    cents = cents - (quarters * QUARTER_VALUE);
 
-    quarters = cents / quarter_value;
-    cents = cents - (quarters * quarter_value);
+    dimes = cents / DIME_VALUE;
+    cents = cents - (dimes * DIME_VALUE);
 
-    dimes = cents / dime_value;
-    cents = cents - (dimes * dime_value);
-
-    nickels = cents / nickel_value;
-    cents = cents - (nickels * nickel_value);
+    nickels = cents / NICKEL_VALUE;
+    cents = cents - (nickels * NICKEL_VALUE);
 
     pennies = cents;
 
