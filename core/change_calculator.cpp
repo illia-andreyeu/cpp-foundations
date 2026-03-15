@@ -43,16 +43,16 @@ void calculate_change_without_modulo(int cents) {
     int dollars {}, quarters {}, dimes {}, nickels {}, pennies {};
 
     dollars = cents / DOLLAR_VALUE;
-    cents = cents - (dollars * DOLLAR_VALUE);
+    cents -= (dollars * DOLLAR_VALUE);
 
     quarters = cents / QUARTER_VALUE;
-    cents = cents - (quarters * QUARTER_VALUE);
+    cents -= (quarters * QUARTER_VALUE);
 
     dimes = cents / DIME_VALUE;
-    cents = cents - (dimes * DIME_VALUE);
+    cents -= (dimes * DIME_VALUE);
 
     nickels = cents / NICKEL_VALUE;
-    cents = cents - (nickels * NICKEL_VALUE);
+    cents -= (nickels * NICKEL_VALUE);
 
     pennies = cents;
 
